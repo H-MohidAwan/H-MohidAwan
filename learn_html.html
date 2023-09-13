@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 1rem;
+    }
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Preview Image</h2>
+    <form>
+      <input
+        type="file"
+        name="upload_file"
+        onchange="getImagePreview(event, 'img_preview')"
+      />
+      <div id="img_preview"></div>
+    </form>
+    <form>
+      <input
+        type="file"
+        name="upload_file"
+        onchange="getImagePreview(event, 'img_preview2')"
+      />
+      <div id="img_preview2"></div>
+    </form>
+    <form>
+      <input
+        type="file"
+        name="upload_file"
+        onchange="getImagePreview(event, 'img_preview3')"
+      />
+      <div id="img_preview3"></div>
+    </form>
+    <input type="submit" />
+  </div>
+  <script type="text/javascript">
+    function getImagePreview(event, targetDivId) {
+      console.log(event.target.files);
+      let image = URL.createObjectURL(event.target.files[0]);
+      let imagediv = document.getElementById(targetDivId);
+      let newimage = document.createElement('img');
+      newimage.src = image;
+      newimage.width = '300';
+      imagediv.innerHTML = '';
+      imagediv.appendChild(newimage);
+    }
+  </script>
+</body>
+</html>
